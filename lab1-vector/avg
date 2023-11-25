@@ -1,0 +1,15 @@
+#!/bin/bash
+n=50
+sum=0
+for i in $(seq 1 $n); do
+  output=$(./image2gray 10240 10240)
+  echo $i". "$output
+  # Add the output to sum
+  sum=$(echo "$sum + $output" | bc -l)
+ done
+
+average=$(echo "scale=6; $sum / $n" | bc -l)
+
+ echo "Average return value: $average"
+
+
